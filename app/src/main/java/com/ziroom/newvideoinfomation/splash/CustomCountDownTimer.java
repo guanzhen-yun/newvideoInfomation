@@ -1,4 +1,4 @@
-package com.ziroom.newvideoinfomation;
+package com.ziroom.newvideoinfomation.splash;
 
 import android.os.Handler;
 

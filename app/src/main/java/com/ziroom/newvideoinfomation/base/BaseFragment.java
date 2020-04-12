@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.ziroom.newvideoinfomation.mvp.view.LifeCircleMvpActivity;
-import com.ziroom.newvideoinfomation.mvp.view.LifeCircleMvpFragment;
+import com.ziroom.mvp.mvp.view.LifeCircleMvpActivity;
+import com.ziroom.mvp.mvp.view.LifeCircleMvpFragment;
 
 import butterknife.ButterKnife;
 

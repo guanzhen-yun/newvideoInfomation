@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import com.ziroom.newvideoinfomation.mvp.view.LifeCircleMvpActivity;
+import com.ziroom.mvp.mvp.view.LifeCircleMvpActivity;
 
 import butterknife.ButterKnife;
 

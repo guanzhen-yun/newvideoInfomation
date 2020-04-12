@@ -8,7 +8,7 @@ import com.ziroom.newvideoinfomation.main.hangzhou.HangZhouFragment;
 import com.ziroom.newvideoinfomation.main.shanghai.ShangHaiFragment;
 import com.ziroom.newvideoinfomation.main.shenzhen.ShenZhenFragment;
 import com.ziroom.newvideoinfomation.main.tools.MainConstantTool;
-import com.ziroom.newvideoinfomation.mvp.base.BaseMvpPresenter;
+import com.ziroom.mvp.mvp.base.BaseMvpPresenter;
 
 /**
  * Author:关震

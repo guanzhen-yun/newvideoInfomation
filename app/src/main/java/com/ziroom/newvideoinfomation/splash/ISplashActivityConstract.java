@@ -1,8 +1,8 @@
 package com.ziroom.newvideoinfomation.splash;
 
-import com.ziroom.newvideoinfomation.mvp.ILifeCircle;
-import com.ziroom.newvideoinfomation.mvp.IMvpView;
-import com.ziroom.newvideoinfomation.mvp.MvpControler;
+import com.ziroom.mvp.mvp.ILifeCircle;
+import com.ziroom.mvp.mvp.IMvpView;
+import com.ziroom.mvp.mvp.MvpControler;
 
 /**
  * Author:关震

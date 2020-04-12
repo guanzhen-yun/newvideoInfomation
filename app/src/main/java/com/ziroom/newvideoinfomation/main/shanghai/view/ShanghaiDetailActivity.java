@@ -10,11 +10,12 @@ import android.widget.ImageView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
-import androidx.core.view.ViewCompat;
 
 import com.ziroom.newvideoinfomation.R;
 import com.ziroom.newvideoinfomation.base.BaseActivity;
 import com.ziroom.newvideoinfomation.base.ViewInject;
+import com.ziroom.newvideoinfomation.main.shanghai.presenter.IShanghaiDetailContract;
+import com.ziroom.newvideoinfomation.main.shanghai.presenter.ShanghaiDetailPresenter;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -24,7 +25,6 @@ import butterknife.BindView;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
-import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -35,7 +35,10 @@ import okhttp3.Response;
  * Description:ShanghaiDetailActivity
  **/
 @ViewInject(mainlayoutid = R.layout.activity_shanghai_detail)
-public class ShanghaiDetailActivity extends BaseActivity {
+public class ShanghaiDetailActivity extends BaseActivity implements IShanghaiDetailContract.IView {
+
+    IShanghaiDetailContract.IPresenter mPresenter = new ShanghaiDetailPresenter(this);
+
     public static String mActivityOptionsCompat = "ShanghaiDetailActivity";
 
     @BindView(R.id.iv_shanghai_detail)
@@ -44,8 +47,8 @@ public class ShanghaiDetailActivity extends BaseActivity {
     @Override
     public void afterBindView() {
         initAnima();
-//        initGetNetData();
-        initPostNetData();
+        initGetNetData();
+//        initPostNetData();
     }
 
     private void initPostNetData() {
@@ -74,30 +77,49 @@ public class ShanghaiDetailActivity extends BaseActivity {
      * 发送网络请求数据
      */
     private void initGetNetData() {
-        OkHttpClient client = new OkHttpClient();//okhttp 配置一些默认
-        HttpUrl.Builder builder = HttpUrl.parse("http://v.juhe.cn/joke/content/list.php").newBuilder();
-        builder.addQueryParameter("sort", "desc");
-        builder.addQueryParameter("page", "1");
-        builder.addQueryParameter("pagesize", "2");
-        builder.addQueryParameter("time", "" + System.currentTimeMillis() / 1000);
-        builder.addQueryParameter("key", "bbc57dd5e4f05991aff09eafd2e667e0");
-
-        Request request = new Request.Builder()
-                .url(builder.build())
-                .get()
-                .build();//建造者设计模式
-        Call call = client.newCall(request);
-        call.enqueue(new Callback() {
+        mIvShanghaiDetail.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                Log.e("initGetNetData", "onFailure" + e);
-            }
-
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                Log.e("initGetNetData", "onResponse" + response.body().string());
+            public void onClick(View view) {
+                mPresenter.getNetData();
             }
         });
+//        GetXiaoHuaTask task = new GetXiaoHuaTask();
+//        task.execute("desc", "1", "2");
+//        Object desc = new ShangHaiDetailHttpTask().getXiaoHuaList("desc", "1", "2");
+//        if (desc instanceof Response) {
+//            Response response = (Response) desc;
+//            Log.e("initGetNetData", "onResponse" + response.body().toString());
+//        }
+
+        //1. 可以隔离
+//        OkHttpClient client = new OkHttpClient();//okhttp 配置一些默认
+//        //2.构建请求 1) url  2)参数
+//        HttpUrl.Builder builder = HttpUrl.parse("http://v.juhe.cn/joke/content/list.php").newBuilder();
+//        builder.addQueryParameter("sort", "desc");
+//        builder.addQueryParameter("page", "1");
+//        builder.addQueryParameter("pagesize", "2");
+//        builder.addQueryParameter("time", "" + System.currentTimeMillis() / 1000);
+//        builder.addQueryParameter("key", "bbc57dd5e4f05991aff09eafd2e667e0");
+//
+//        //3.构建Request
+//        Request request = new Request.Builder()
+//                .url(builder.build())
+//                .get()
+//                .build();//建造者设计模式
+//        //4.构建Call
+//        Call call = client.newCall(request);
+//        //5.执行网络请求
+//        call.enqueue(new Callback() {
+//            @Override
+//            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+//                Log.e("initGetNetData", "onFailure" + e);
+//            }
+//
+//            @Override
+//            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+//                Log.e("initGetNetData", "onResponse" + response.body().string());
+//            }
+//        });
     }
 
     private void initAnima() {

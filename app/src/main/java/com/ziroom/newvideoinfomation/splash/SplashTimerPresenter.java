@@ -1,6 +1,6 @@
 package com.ziroom.newvideoinfomation.splash;
 
-import com.ziroom.newvideoinfomation.mvp.base.BaseMvpPresenter;
+import com.ziroom.mvp.mvp.base.BaseMvpPresenter;
 
 /**
  * Author:关震

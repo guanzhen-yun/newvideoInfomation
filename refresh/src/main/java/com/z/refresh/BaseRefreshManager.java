@@ -12,4 +12,14 @@ public abstract class BaseRefreshManager {
         mLayoutInflater = LayoutInflater.from(context);
     }
     public abstract View getHeaderView();
+
+    public abstract void downRefresh();
+
+    public abstract void releaseRefresh();
+
+    public abstract void idelRefresh();
+
+    public abstract void refreshing();
+
+    public abstract void downRefreshPercent(float percent);
 }

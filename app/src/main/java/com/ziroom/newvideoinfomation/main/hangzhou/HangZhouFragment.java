@@ -36,6 +36,7 @@ public class HangZhouFragment extends BaseFragment {
     @Override
     public void afterBindView() {
         tlTablayout.setupWithViewPager(vpViewpager);
+        vpViewpager.setOffscreenPageLimit(1);
         vpViewpager.setAdapter( new HangZhouViewPagerAdapter(getChildFragmentManager()));
     }
 }

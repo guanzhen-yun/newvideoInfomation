@@ -14,6 +14,7 @@ import androidx.core.util.Pair;
 import com.ziroom.newvideoinfomation.R;
 import com.ziroom.newvideoinfomation.base.BaseActivity;
 import com.ziroom.newvideoinfomation.base.ViewInject;
+import com.ziroom.newvideoinfomation.main.shanghai.dto.ShangHaiDetailBean;
 import com.ziroom.newvideoinfomation.main.shanghai.presenter.IShanghaiDetailContract;
 import com.ziroom.newvideoinfomation.main.shanghai.presenter.ShanghaiDetailPresenter;
 
@@ -80,7 +81,7 @@ public class ShanghaiDetailActivity extends BaseActivity implements IShanghaiDet
         mIvShanghaiDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPresenter.getNetData();
+                mPresenter.getNetData(2);
             }
         });
 //        GetXiaoHuaTask task = new GetXiaoHuaTask();
@@ -145,4 +146,8 @@ public class ShanghaiDetailActivity extends BaseActivity implements IShanghaiDet
 
     }
 
+    @Override
+    public void showData(ShangHaiDetailBean data) {
+
+    }
 }

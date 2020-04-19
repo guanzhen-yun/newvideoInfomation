@@ -2,12 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <TextView
+    <com.google.android.material.tabs.TabLayout
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabIndicatorHeight="@dimen/dp_2"
+        app:tabMode="fixed"
+        android:id="@+id/tl_tablayout"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="杭州" />
+        android:id="@+id/vp_viewpager"
+        />
 
 </LinearLayout>

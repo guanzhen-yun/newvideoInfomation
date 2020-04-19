@@ -1,14 +1,17 @@
 package com.ziroom.newvideoinfomation.main;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ziroom.newvideoinfomation.R;
 import com.ziroom.newvideoinfomation.base.BaseActivity;
@@ -26,11 +29,14 @@ public class MainActivity extends BaseActivity implements IMainActivityContract.
     @BindView(R.id.fac_main_home)
     FloatingActionButton mFacMainHome;
     @BindView(R.id.rb_main_shanghai)
-    RadioButton mRbMainShanghai;
+    LottieAnimationView mRbMainShanghai;
+//    RadioButton mRbMainShanghai;
     @BindView(R.id.rb_main_hangzhou)
-    RadioButton mRbMainHangzhou;
+    LottieAnimationView mRbMainHangzhou;
+//    RadioButton mRbMainHangzhou;
     @BindView(R.id.rg_main_top)
-    RadioGroup mRgMainTop;
+    LinearLayout mRgMainTop;
+//    RadioGroup mRgMainTop;
     @BindView(R.id.fl_main_bottom)
     FrameLayout mFlMainBottom;
     @BindView(R.id.rb_main_nav_home_beijing)
@@ -50,20 +56,45 @@ public class MainActivity extends BaseActivity implements IMainActivityContract.
     }
 
     private void initCheckListener() {
-        mRbMainShanghai.setChecked(true);
-        mRgMainTop.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == mPresenter.getCurrentCheckedId()) {
-                return;
-            }
-            switch (checkedId) {
-                case R.id.rb_main_shanghai:
-                    mPresenter.replaceFragment(MainConstantTool.SHANGHAI);
-                    break;
-                case R.id.rb_main_hangzhou:
-                    mPresenter.replaceFragment(MainConstantTool.HANGZHOU);
-                    break;
+        mRbMainShanghai.playAnimation();
+        mRbMainShanghai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if( mRbMainShanghai.getId() == mPresenter.getCurrentCheckedId()) {
+                    return;
+                }
+                mPresenter.replaceFragment(MainConstantTool.SHANGHAI);
+                mRbMainShanghai.playAnimation();
+                mRbMainHangzhou.reverseAnimation();
             }
         });
+
+        mRbMainHangzhou.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mRbMainHangzhou.getId() == mPresenter.getCurrentCheckedId()) {
+                    return;
+                }
+                mPresenter.replaceFragment(MainConstantTool.HANGZHOU);
+                mRbMainHangzhou.playAnimation();
+                mRbMainShanghai.reverseAnimation();
+            }
+        });
+
+//        mRbMainShanghai.setChecked(true);
+//        mRgMainTop.setOnCheckedChangeListener((group, checkedId) -> {
+//            if (checkedId == mPresenter.getCurrentCheckedId()) {
+//                return;
+//            }
+//            switch (checkedId) {
+//                case R.id.rb_main_shanghai:
+//                    mPresenter.replaceFragment(MainConstantTool.SHANGHAI);
+//                    break;
+//                case R.id.rb_main_hangzhou:
+//                    mPresenter.replaceFragment(MainConstantTool.HANGZHOU);
+//                    break;
+//            }
+//        });
 
         mRgMainBottom.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == mPresenter.getCurrentCheckedId()) {
@@ -108,10 +139,12 @@ public class MainActivity extends BaseActivity implements IMainActivityContract.
     private void handleBottomPosition() {
         if(mPresenter.getTopPosition() != 1) {
             mPresenter.replaceFragment(MainConstantTool.SHANGHAI);
-            mRbMainShanghai.setChecked(true);
+//            mRbMainShanghai.setChecked(true);
+            mRbMainShanghai.playAnimation();
         } else {
             mPresenter.replaceFragment(MainConstantTool.HANGZHOU);
-            mRbMainHangzhou.setChecked(true);
+//            mRbMainHangzhou.setChecked(true);
+            mRbMainHangzhou.playAnimation();
         }
     }
 
@@ -126,7 +159,8 @@ public class MainActivity extends BaseActivity implements IMainActivityContract.
         }
     }
 
-    private void changeAnima(RadioGroup gone, RadioGroup show) {
+    private void changeAnima(ViewGroup gone, ViewGroup show) {
+//    private void changeAnima(RadioGroup gone, RadioGroup show) {
         //消失的动画
         gone.clearAnimation();//清除自身动画
         Animation animationGone = AnimationUtils.loadAnimation(this, R.anim.main_tab_translate_hide);

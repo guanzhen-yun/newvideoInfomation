@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/zhihu_app_barlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:layout_height="?attr/actionBarSize"
+                >
+            </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/zhihu_recyclerview"
+        />
+
+    <TextView
+        app:layout_behavior="@string/bottom_show_behavior"
+        android:layout_gravity="bottom"
+        android:gravity="center_horizontal"
+        android:text="我是底部"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+
+        />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

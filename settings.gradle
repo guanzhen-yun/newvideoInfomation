@@ -1,3 +1,5 @@
 include ':app', ':mvp', ':http', ':task'
 rootProject.name='newvideoInfomation'
 include ':refresh'
+include ':annotation'
+include ':apt'

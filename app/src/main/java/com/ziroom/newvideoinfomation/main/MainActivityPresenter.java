@@ -3,6 +3,7 @@ package com.ziroom.newvideoinfomation.main;
 import androidx.fragment.app.Fragment;
 
 import com.ziroom.newvideoinfomation.R;
+import com.ziroom.newvideoinfomation.base.BasePresenter;
 import com.ziroom.newvideoinfomation.main.beijing.BeiJingFragment;
 import com.ziroom.newvideoinfomation.main.hangzhou.HangZhouFragment;
 import com.ziroom.newvideoinfomation.main.shanghai.ShangHaiFragment;
@@ -15,7 +16,7 @@ import com.ziroom.mvp.mvp.base.BaseMvpPresenter;
  * Date:2020/4/5 18:46
  * Description:MainActivityPresenter
  **/
-public class MainActivityPresenter extends BaseMvpPresenter<IMainActivityContract.IView> implements IMainActivityContract.IPresenter {
+public class MainActivityPresenter extends BasePresenter<IMainActivityContract.IView> implements IMainActivityContract.IPresenter {
 
     //当前Fragment的角标
     private int mCurrentFragmentIndex;
@@ -28,10 +29,10 @@ public class MainActivityPresenter extends BaseMvpPresenter<IMainActivityContrac
         super(view);
     }
 
-    @Override
-    protected IMainActivityContract.IView getEmptyView() {
-        return IMainActivityContract.emptyView;
-    }
+//    @Override
+//    protected IMainActivityContract.IView getEmptyView() {
+//        return IMainActivityContract.emptyView;
+//    }
 
     @Override
     public void initHomeFragment() {

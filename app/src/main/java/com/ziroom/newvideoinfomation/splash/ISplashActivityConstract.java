@@ -1,8 +1,8 @@
 package com.ziroom.newvideoinfomation.splash;
 
+import com.z.annotation.MvpEmptyViewFactory;
 import com.ziroom.mvp.mvp.ILifeCircle;
 import com.ziroom.mvp.mvp.IMvpView;
-import com.ziroom.mvp.mvp.MvpControler;
 
 /**
  * Author:关震
@@ -10,6 +10,7 @@ import com.ziroom.mvp.mvp.MvpControler;
  * Description:ISplashActivityConstract
  **/
 public interface ISplashActivityConstract {
+    @MvpEmptyViewFactory
     interface IView extends IMvpView {
         void setTvTimer(String timer, boolean isEnable);
     }
@@ -18,15 +19,15 @@ public interface ISplashActivityConstract {
         void initTimer();
     }
 
-    IView emptyView = new IView() {
-        @Override
-        public void setTvTimer(String timer, boolean isEnable) {
-
-        }
-
-        @Override
-        public MvpControler getMvpControler() {
-            return null;
-        }
-    };
+//    IView emptyView = new IView() {
+//        @Override
+//        public void setTvTimer(String timer, boolean isEnable) {
+//
+//        }
+//
+//        @Override
+//        public MvpControler getMvpControler() {
+//            return null;
+//        }
+//    };
 }

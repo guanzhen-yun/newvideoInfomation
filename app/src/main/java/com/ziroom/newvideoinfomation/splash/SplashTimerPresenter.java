@@ -1,13 +1,13 @@
 package com.ziroom.newvideoinfomation.splash;
 
-import com.ziroom.mvp.mvp.base.BaseMvpPresenter;
+import com.ziroom.newvideoinfomation.base.BasePresenter;
 
 /**
  * Author:关震
  * Date:2020/4/5 12:17
  * Description:SplashTimerPresenter
  **/
-public class SplashTimerPresenter extends BaseMvpPresenter<ISplashActivityConstract.IView> implements ISplashActivityConstract.IPresenter {
+public class SplashTimerPresenter extends BasePresenter<ISplashActivityConstract.IView> implements ISplashActivityConstract.IPresenter {
     private CustomCountDownTimer timer;
 
     public SplashTimerPresenter(ISplashActivityConstract.IView view) {
@@ -44,8 +44,8 @@ public class SplashTimerPresenter extends BaseMvpPresenter<ISplashActivityConstr
     /**
      * 防止 空指针异常
      */
-    @Override
-    protected ISplashActivityConstract.IView getEmptyView() {
-        return ISplashActivityConstract.emptyView;
-    }
+//    @Override
+//    protected ISplashActivityConstract.IView getEmptyView() {
+//        return ISplashActivityConstract.emptyView;
+//    }
 }

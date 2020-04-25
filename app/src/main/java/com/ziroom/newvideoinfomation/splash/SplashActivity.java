@@ -3,13 +3,13 @@ package com.ziroom.newvideoinfomation.splash;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Debug;
 import android.widget.TextView;
 
-import com.ziroom.newvideoinfomation.base.BaseActivity;
-import com.ziroom.newvideoinfomation.main.MainActivity;
 import com.ziroom.newvideoinfomation.R;
+import com.ziroom.newvideoinfomation.base.BaseActivity;
+import com.ziroom.newvideoinfomation.base.Test;
 import com.ziroom.newvideoinfomation.base.ViewInject;
+import com.ziroom.newvideoinfomation.main.MainActivity;
 
 import java.io.File;
 
@@ -26,6 +26,8 @@ public class SplashActivity extends BaseActivity implements ISplashActivityConst
 
     @BindView(R.id.vv_play)
     FullScreenVideoView mVideoView;
+    //    @BindView(R.id.splash_vs)
+//    ViewStub mViewStub;
     @BindView(R.id.tv_splash_timer)
     TextView mTvTimer;
     private ISplashActivityConstract.IPresenter timerPresenter;
@@ -52,6 +54,8 @@ public class SplashActivity extends BaseActivity implements ISplashActivityConst
     private void initListener() {
         mTvTimer.setOnClickListener(view -> {
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
+//            MemoryTest.getInstance(this);
+            Test.save(this);
             finish();
         });
 
@@ -60,6 +64,17 @@ public class SplashActivity extends BaseActivity implements ISplashActivityConst
 
     @Override
     public void setTvTimer(String timer, boolean enable) {
+//        if (TextUtils.equals(timer, "跳过")) {
+//            View inflate = mViewStub.inflate();
+//            inflate.setVisibility(View.VISIBLE);
+//            inflate.findViewById(R.id.tv_splash_timer).setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+//                    finish();
+//                }
+//            });
+//        }
         mTvTimer.setText(timer);
         mTvTimer.setEnabled(enable);
     }

@@ -2,6 +2,7 @@ package com.ziroom.newvideoinfomation.main;
 
 import androidx.fragment.app.Fragment;
 
+import com.z.annotation.MvpEmptyViewFactory;
 import com.ziroom.mvp.mvp.ILifeCircle;
 import com.ziroom.mvp.mvp.IMvpView;
 import com.ziroom.mvp.mvp.MvpControler;
@@ -12,6 +13,7 @@ import com.ziroom.mvp.mvp.MvpControler;
  * Description:IMainActivityContract
  **/
 public interface IMainActivityContract {
+    @MvpEmptyViewFactory
     interface IView extends IMvpView {
 
         void showFragment(Fragment mFragment);
@@ -35,25 +37,25 @@ public interface IMainActivityContract {
         int getBottomPosition();
     }
 
-    IView emptyView = new IView() {
-        @Override
-        public void showFragment(Fragment mFragment) {
-
-        }
-
-        @Override
-        public void addFragment(Fragment mFragment) {
-
-        }
-
-        @Override
-        public void hideFragment(Fragment mFragment) {
-
-        }
-
-        @Override
-        public MvpControler getMvpControler() {
-            return null;
-        }
-    };
+//    IView emptyView = new IView() {
+//        @Override
+//        public void showFragment(Fragment mFragment) {
+//
+//        }
+//
+//        @Override
+//        public void addFragment(Fragment mFragment) {
+//
+//        }
+//
+//        @Override
+//        public void hideFragment(Fragment mFragment) {
+//
+//        }
+//
+//        @Override
+//        public MvpControler getMvpControler() {
+//            return null;
+//        }
+//    };
 }

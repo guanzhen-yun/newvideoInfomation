@@ -6,6 +6,8 @@ import android.os.Build;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
@@ -44,11 +46,33 @@ public class ShanghaiDetailActivity extends BaseActivity implements IShanghaiDet
 
     @BindView(R.id.iv_shanghai_detail)
     ImageView mIvShanghaiDetail;
+    @BindView(R.id.tv_crash)
+    TextView mTvCrash;
 
     @Override
     public void afterBindView() {
         initAnima();
         initGetNetData();
+        mIvShanghaiDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String s = null;
+                s.toString();
+            }
+        });
+
+        mTvCrash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String s = null;
+                        s.toString();
+                    }
+                }).start();
+            }
+        });
 //        initPostNetData();
     }
 
@@ -148,6 +172,6 @@ public class ShanghaiDetailActivity extends BaseActivity implements IShanghaiDet
 
     @Override
     public void showData(ShangHaiDetailBean data) {
-
+        Toast.makeText(this, data.result.data.get(0).content, Toast.LENGTH_SHORT).show();
     }
 }

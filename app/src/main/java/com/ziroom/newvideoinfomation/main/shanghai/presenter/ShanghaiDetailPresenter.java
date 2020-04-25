@@ -1,19 +1,10 @@
 package com.ziroom.newvideoinfomation.main.shanghai.presenter;
 
-import android.util.Log;
-
-import com.google.gson.Gson;
 import com.ziroom.http.result.IResult;
-import com.ziroom.mvp.mvp.base.BaseMvpPresenter;
 import com.ziroom.newvideoinfomation.base.BasePresenter;
 import com.ziroom.newvideoinfomation.base.JHTask;
 import com.ziroom.newvideoinfomation.main.shanghai.dto.ShangHaiDetailBean;
 import com.ziroom.newvideoinfomation.main.shanghai.module.ShangHaiDetailHttpTask;
-import com.ziroom.task.LfTask;
-
-import java.io.IOException;
-
-import okhttp3.Response;
 
 /**
  * Author:关震
@@ -25,10 +16,10 @@ public class ShanghaiDetailPresenter extends BasePresenter<IShanghaiDetailContra
         super(view);
     }
 
-    @Override
-    protected IShanghaiDetailContract.IView getEmptyView() {
-        return IShanghaiDetailContract.emptyView;
-    }
+//    @Override
+//    protected IShanghaiDetailContract.IView getEmptyView() {
+//        return IShanghaiDetailContract.emptyView;
+//    }
 
     @Override
     public void getNetData(int pagesize) {

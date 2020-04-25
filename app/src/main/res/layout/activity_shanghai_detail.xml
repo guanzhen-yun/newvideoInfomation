@@ -13,4 +13,12 @@
         android:transitionName="ShanghaiDetailActivity">
 
     </ImageView>
+
+    <TextView
+        android:id="@+id/tv_crash"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="子线程崩溃"
+        android:gravity="center"
+        />
 </LinearLayout>

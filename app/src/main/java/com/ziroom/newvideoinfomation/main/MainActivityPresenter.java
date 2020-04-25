@@ -52,6 +52,7 @@ public class MainActivityPresenter extends BaseMvpPresenter<IMainActivityContrac
     //切换Fragment的方法
     @Override
     public void replaceFragment(int mCurrentFragmentIndex) {
+        //断点---condition i== 2 可以控制断点执行次数
         for (int i = 0; i < mFragments.length; i++) {
             if (mCurrentFragmentIndex != i) {
                 if (mFragments[i] != null) {

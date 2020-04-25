@@ -3,6 +3,7 @@ package com.ziroom.newvideoinfomation.splash;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Debug;
 import android.widget.TextView;
 
 import com.ziroom.newvideoinfomation.base.BaseActivity;
@@ -31,6 +32,7 @@ public class SplashActivity extends BaseActivity implements ISplashActivityConst
 
     @Override
     public void afterBindView() {
+//        Debug.waitForDebugger();
         initTimerPresenter();
         initListener();
         initVideo();

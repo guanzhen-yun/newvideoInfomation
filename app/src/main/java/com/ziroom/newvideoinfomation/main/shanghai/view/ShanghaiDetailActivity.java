@@ -2,7 +2,9 @@ package com.ziroom.newvideoinfomation.main.shanghai.view;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.opengl.GLSurfaceView;
 import android.os.Build;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,14 +19,18 @@ import com.ziroom.newvideoinfomation.R;
 import com.ziroom.newvideoinfomation.base.BaseActivity;
 import com.ziroom.newvideoinfomation.base.ViewInject;
 import com.ziroom.newvideoinfomation.main.shanghai.dto.ShangHaiDetailBean;
-import com.ziroom.newvideoinfomation.main.shanghai.presenter.IShanghaiDetailContract;
+import com.ziroom.newvideoinfomation.main.shanghai.lf.IShanghaiDetailContract;
 import com.ziroom.newvideoinfomation.main.shanghai.presenter.ShanghaiDetailPresenter;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
+
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -48,9 +54,27 @@ public class ShanghaiDetailActivity extends BaseActivity implements IShanghaiDet
     ImageView mIvShanghaiDetail;
     @BindView(R.id.tv_crash)
     TextView mTvCrash;
+//    @BindView(R.id.GLSurfaceView)
+//    GLSurfaceView glSurfaceView;
 
     @Override
     public void afterBindView() {
+//        glSurfaceView.setRenderer(new GLSurfaceView.Renderer() {
+//            @Override
+//            public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
+//         //都是子线程回调
+//            }
+//
+//            @Override
+//            public void onSurfaceChanged(GL10 gl10, int i, int i1) {
+//
+//            }
+//
+//            @Override
+//            public void onDrawFrame(GL10 gl10) {
+////循环调用 进行渲染
+//            }
+//        });
         initAnima();
         initGetNetData();
         mIvShanghaiDetail.setOnClickListener(new View.OnClickListener() {
@@ -173,5 +197,12 @@ public class ShanghaiDetailActivity extends BaseActivity implements IShanghaiDet
     @Override
     public void showData(ShangHaiDetailBean data) {
         Toast.makeText(this, data.result.data.get(0).content, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

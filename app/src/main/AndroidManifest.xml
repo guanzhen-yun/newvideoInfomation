@@ -3,7 +3,9 @@
     package="com.ziroom.newvideoinfomation">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!--Android9.0 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <application
         android:name=".base.VideoInfomationApplication"
         android:allowBackup="true"
@@ -23,9 +25,15 @@
             </intent-filter>
         </activity>
 
+        <provider
+            android:authorities="com.ziroom.newvideoinfomation.process.data"
+            android:name=".main.beijing.MainProcessDataProvider"/>
+        <service android:name=".main.beijing.MainProcessService"/>
         <activity android:name=".main.MainActivity"
             />
-        <activity android:name=".main.shanghai.view.ShanghaiDetailActivity" />
+        <activity
+            android:process=":shanghai.detail"
+            android:name=".main.shanghai.view.ShanghaiDetailActivity" />
 
         <!--播放器配置信息-->
         <meta-data

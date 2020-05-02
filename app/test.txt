@@ -5,3 +5,35 @@
 85%=21           90%=19          95%=0c         100%=00(全透明)
 
 不透明度与之相反 直接可以通过255进行换算 也就是高两位指的是可见度 不是透明度
+
+Android studio 3.0 以后 android.injected.testOnly=false  需要加这一行在 gradle.properties 防止不能正常编译代码
+https://developer.android.google.cn/index.html
+
+Android6.0
+1.运行时权限
+
+Android7.0
+1.FileProvider 获取图片文件uri
+
+Android8.0
+1.不允许后台服务调用startService  --- startForegroundService & startForeground
+
+Android9.0
+1.FOREGROUND_SERVICE 权限
+2.黑白灰名单
+3.非Activity 启动Activity 要加 FLAG_ACTIVITY_NEW_TASK
+4.默认强制使用https  --- networkSecurityConfig
+
+Android10.0
+1.MediaStore SAF 访问文件
+2.后台启动Activity的限制---Notification
+
+ndk开发 配置ndk路径 local.properties
+ndk.dir=D\:\\studiosdk\\ndk\\21.1.6352462
+NDK 这套工具使您能在 Android 应用中使用 C 和 C++ 代码。
+CMake 一款外部编译工具，可与 Gradle 搭配使用来编译原生库。如果您只计划使用 ndk-build，则不需要此组件。
+LLDB Android Studio 用于调试原生代码的调试程序。
+
+该工程的so删除后再还原可能不会恢复正常 需要到源文件下重新复制
+
+//混合开发

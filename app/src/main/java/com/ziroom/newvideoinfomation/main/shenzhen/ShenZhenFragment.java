@@ -3,13 +3,17 @@ package com.ziroom.newvideoinfomation.main.shenzhen;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.z.videoinfomationndk.MainActivity;
 import com.ziroom.newvideoinfomation.R;
 import com.ziroom.newvideoinfomation.base.BaseFragment;
 import com.ziroom.newvideoinfomation.base.ViewInject;
+
+import butterknife.BindView;
 
 /**
  * Author:关震
@@ -18,14 +22,22 @@ import com.ziroom.newvideoinfomation.base.ViewInject;
  **/
 @ViewInject(mainlayoutid = R.layout.fragment_shenzhen)
 public class ShenZhenFragment extends BaseFragment {
+
+    static {
+        System.loadLibrary("native-lib");
+    }
+
+    @BindView(R.id.tv_position)
+    TextView tvPosition;
+
     @Override
     public void afterBindView() {
-
+        tvPosition.setText(MainActivity.stringFromJNI());
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
-        if(isVisibleToUser) {
+        if (isVisibleToUser) {
             //加载网络数据
         }
         super.setUserVisibleHint(isVisibleToUser);

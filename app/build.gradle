@@ -49,13 +49,14 @@ dependencies {
     implementation project(path: ':http')
     implementation project(path: ':task')
     implementation project(path: ':player')
-    implementation 'com.github.guanzhen-yun:GodRefreshLayout:V1.0.4'
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
     implementation project(path: ':ipc')
+    implementation 'com.github.guanzhen-yun:GodRefreshLayout:V1.0.4'
     //    implementation project(path: ':refresh')
     //leakcanary
     //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
     //    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
     //    testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
-    implementation files('libs/opengl.jar')
+    //j2v8
+    implementation 'com.eclipsesource.j2v8:j2v8:5.0.103@aar'
 }

@@ -6,8 +6,12 @@
 
 不透明度与之相反 直接可以通过255进行换算 也就是高两位指的是可见度 不是透明度
 
+androidxref.com
+https://www.androidos.net.cn/android/10.0.0_r6/xref
+
 Android studio 3.0 以后 android.injected.testOnly=false  需要加这一行在 gradle.properties 防止不能正常编译代码
 https://developer.android.google.cn/index.html
+
 
 Android6.0
 1.运行时权限
@@ -38,3 +42,47 @@ LLDB Android Studio 用于调试原生代码的调试程序。
 
 //混合开发
 1.C++ NDK
+
+2.webview
+https://www.jianshu.com/p/3e0136c9e748
+https://www.jianshu.com/p/5cc2eae14e07
+
+3.reactnative
+https://reactnative.cn/
+
+npx react-native init AwesomeProject
+cd AwesomeProject
+yarn android
+# 或者
+yarn react-native run-android
+
+修改App.index可热更新
+
+4.weex
+https://weex.apache.org/zh/guide/introduction.html
+
+npm i -g weex-toolkit
+weex -v // 查看当前weex工具版本
+weex create awesome-project
+
+weex platform add ios
+weex platform add android
+
+weex run ios
+weex run android 直接运行项目到手机上
+weex run web
+
+weex debug
+
+cd awesome-project
+npm install
+npm start  可以生成一个二维码 需要week扫码  有时没有二维码 需要换个浏览器
+
+index.vue 修改后 npm run build 再执行weex run android 才能修改  但是在web上可以随时实时更改!
+5.微信小程序
+https://developers.weixin.qq.com/miniprogram/dev/framework/
+注册 登录账号 在编译器里 小程序后台创建小程序 小程序微信开发工具填写appid生成小程序代码  然后右上角发布
+https://jingyan.baidu.com/article/456c463b3bcd950a5831449f.html 发布小程序
+
+6.flutter
+https://flutterchina.club

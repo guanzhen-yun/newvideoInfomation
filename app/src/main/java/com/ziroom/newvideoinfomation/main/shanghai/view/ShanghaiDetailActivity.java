@@ -13,11 +13,16 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
 
+import com.z.ipc.CallBack;
+import com.z.ipc.IConnectListener;
+import com.z.ipc.IpcManager;
+import com.z.ipc.request.IpcRequest;
+import com.z.ipc.result.IResult;
 import com.ziroom.newvideoinfomation.R;
 import com.ziroom.newvideoinfomation.base.BaseActivity;
 import com.ziroom.newvideoinfomation.base.ViewInject;
 import com.ziroom.newvideoinfomation.main.shanghai.dto.ShangHaiDetailBean;
-import com.ziroom.newvideoinfomation.main.shanghai.presenter.IShanghaiDetailContract;
+import com.ziroom.newvideoinfomation.main.shanghai.lf.IShanghaiDetailContract;
 import com.ziroom.newvideoinfomation.main.shanghai.presenter.ShanghaiDetailPresenter;
 
 import org.jetbrains.annotations.NotNull;
@@ -48,33 +53,107 @@ public class ShanghaiDetailActivity extends BaseActivity implements IShanghaiDet
     ImageView mIvShanghaiDetail;
     @BindView(R.id.tv_crash)
     TextView mTvCrash;
+//    private GetProcessReceiver getProcessReceiver;
+    //    @BindView(R.id.GLSurfaceView)
+//    GLSurfaceView glSurfaceView;
+
+//    private Messenger messenger;
+
+//    private Handler handler = new Handler() {
+//        @Override
+//        public void handleMessage(@NonNull Message msg) {
+//            Bundle data = msg.getData();
+//            Log.e(mActivityOptionsCompat, "processDec= " + data.getString("process"));
+//        }
+//    };
+
+//    private Messenger messengerClient = new Messenger(handler);
+
+//    private ServiceConnection mConnection = new ServiceConnection() {
+//        @Override
+//        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+//            messenger = new Messenger(iBinder);
+//            Message message = new Message();
+//            message.what = MainProcessService.SHANGHAI_DETAIL;
+//            message.replyTo = messengerClient;
+//            try {
+//                messenger.send(message);
+//            } catch (RemoteException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        @Override
+//        public void onServiceDisconnected(ComponentName componentName) {
+//
+//        }
+//    };
 
     @Override
     public void afterBindView() {
+//        initViews();
         initAnima();
+//        initReceiver();
+//        initProcessData();
         initGetNetData();
-        mIvShanghaiDetail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String s = null;
-                s.toString();
-            }
-        });
-
-        mTvCrash.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        String s = null;
-                        s.toString();
-                    }
-                }).start();
-            }
-        });
+//        initListener();
 //        initPostNetData();
+//        initProviderData();
+//        initProcessService();
+        initIpc();
     }
+
+    private void initIpc() {
+        IpcRequest request = new IpcRequest("shanghaiDetail");
+        //异步
+//        IpcManager.getInstance(this).executeAsync(request, new CallBack() {
+//            @Override
+//            public void callBack(IResult result) {
+//                String data = result.data();
+//                Log.e("数据请求", data);
+//            }
+//        });
+
+        //同步
+        IpcManager.getInstance(this).initConnect(new IConnectListener() {
+            @Override
+            public void onConnect(int connectStatus) {
+                if(connectStatus == IpcManager.IConnectStatus.STATUS_BIND) {
+                    IResult result = IpcManager.getInstance(ShanghaiDetailActivity.this).executeSync(request);
+                    Log.e("数据请求", result.data());
+                }
+            }
+        });
+    }
+
+//    private void initProcessService() {
+//        Intent intent = new Intent(this, MainProcessService.class);
+//        bindService(intent, mConnection, Service.BIND_AUTO_CREATE);
+//    }
+
+//    private void initProviderData() {
+//        Uri insert = getContentResolver().insert(Uri.parse("content://com.ziroom.newvideoinfomation.process.data"), new ContentValues());
+//        Log.e(mActivityOptionsCompat, "processDec= " + insert.toString());
+//    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        unregisterReceiver(getProcessReceiver);
+    }
+
+//    private void initReceiver() {
+//        getProcessReceiver = new GetProcessReceiver();
+////        LocalBroadcastManager.getInstance(this).registerReceiver(); 本地广播
+//        registerReceiver(getProcessReceiver, new IntentFilter("beijing_post_process_data"));
+//    }
+
+//    private void initProcessData() {
+//        Intent intent = new Intent("shanghai_get_process_data");
+//        sendBroadcast(intent);
+////        String processDec = ProcessDataTest.getInstance().getProcessDec();
+////        Log.e(mActivityOptionsCompat, "processDec= " + processDec);
+//    }
 
     private void initPostNetData() {
         OkHttpClient client = new OkHttpClient();//okhttp 配置一些默认
@@ -174,4 +253,55 @@ public class ShanghaiDetailActivity extends BaseActivity implements IShanghaiDet
     public void showData(ShangHaiDetailBean data) {
         Toast.makeText(this, data.result.data.get(0).content, Toast.LENGTH_SHORT).show();
     }
+
+//    private class GetProcessReceiver extends BroadcastReceiver {
+//
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            String processDec = intent.getStringExtra("processDec");
+//            Log.e(mActivityOptionsCompat,"processDec= " + processDec);
+//        }
+//    }
+
+//    private void initListener() {
+//        mIvShanghaiDetail.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String s = null;
+//                s.toString();
+//            }
+//        });
+//
+//        mTvCrash.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        String s = null;
+//                        s.toString();
+//                    }
+//                }).start();
+//            }
+//        });
+//    }
+
+//    private void initViews() {
+    //        glSurfaceView.setRenderer(new GLSurfaceView.Renderer() {
+//            @Override
+//            public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig) {
+//         //都是子线程回调
+//            }
+//
+//            @Override
+//            public void onSurfaceChanged(GL10 gl10, int i, int i1) {
+//
+//            }
+//
+//            @Override
+//            public void onDrawFrame(GL10 gl10) {
+////循环调用 进行渲染
+//            }
+//        });
+//    }
 }

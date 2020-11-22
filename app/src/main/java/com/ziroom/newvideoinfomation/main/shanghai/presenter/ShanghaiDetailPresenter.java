@@ -4,6 +4,7 @@ import com.ziroom.http.result.IResult;
 import com.ziroom.newvideoinfomation.base.BasePresenter;
 import com.ziroom.newvideoinfomation.base.JHTask;
 import com.ziroom.newvideoinfomation.main.shanghai.dto.ShangHaiDetailBean;
+import com.ziroom.newvideoinfomation.main.shanghai.lf.IShanghaiDetailContract;
 import com.ziroom.newvideoinfomation.main.shanghai.module.ShangHaiDetailHttpTask;
 
 /**

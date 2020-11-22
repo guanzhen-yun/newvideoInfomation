@@ -1,9 +1,14 @@
 package com.ziroom.newvideoinfomation.splash;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.provider.Settings;
 import android.widget.TextView;
+
+import androidx.core.app.NotificationManagerCompat;
 
 import com.ziroom.newvideoinfomation.R;
 import com.ziroom.newvideoinfomation.base.BaseActivity;
@@ -14,6 +19,9 @@ import com.ziroom.newvideoinfomation.main.MainActivity;
 import java.io.File;
 
 import butterknife.BindView;
+
+import static android.provider.Settings.EXTRA_APP_PACKAGE;
+import static android.provider.Settings.EXTRA_CHANNEL_ID;
 
 /**
  * Author:关震
@@ -40,6 +48,14 @@ public class SplashActivity extends BaseActivity implements ISplashActivityConst
         initVideo();
     }
 
+    private void checkNotifySetting() {
+        if (Utils.isOpenNotification(this)) {
+            goToMain();
+        } else {
+            Utils.showOpenNotifyDialog(this);
+        }
+    }
+
     private void initTimerPresenter() {
         timerPresenter = new SplashTimerPresenter(this);
         timerPresenter.initTimer();
@@ -53,13 +69,17 @@ public class SplashActivity extends BaseActivity implements ISplashActivityConst
 
     private void initListener() {
         mTvTimer.setOnClickListener(view -> {
-            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            checkNotifySetting();
 //            MemoryTest.getInstance(this);
-            Test.save(this);
-            finish();
+//            Test.save(this);
         });
 
         mVideoView.setOnCompletionListener(MediaPlayer::start);
+    }
+
+    private void goToMain() {
+        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        finish();
     }
 
     @Override

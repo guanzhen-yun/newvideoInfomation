@@ -12,7 +12,7 @@ import com.ziroom.newvideoinfomation.base.BaseFragment;
 import com.ziroom.newvideoinfomation.base.ViewInject;
 import com.ziroom.newvideoinfomation.main.hangzhou.adapter.ZhiHuAdapter;
 import com.ziroom.newvideoinfomation.main.shanghai.dto.ShangHaiDetailBean;
-import com.ziroom.newvideoinfomation.main.shanghai.presenter.IShanghaiDetailContract;
+import com.ziroom.newvideoinfomation.main.shanghai.lf.IShanghaiDetailContract;
 import com.ziroom.newvideoinfomation.main.shanghai.presenter.ShanghaiDetailPresenter;
 
 import butterknife.BindView;

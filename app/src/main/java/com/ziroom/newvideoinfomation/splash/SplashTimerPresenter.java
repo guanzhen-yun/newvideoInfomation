@@ -16,7 +16,7 @@ public class SplashTimerPresenter extends BasePresenter<ISplashActivityConstract
 
     @Override
     public void initTimer() {
-        timer = new CustomCountDownTimer(5, new CustomCountDownTimer.ICountDownHandler() {
+        timer = new CustomCountDownTimer(5/5, new CustomCountDownTimer.ICountDownHandler() {
             @Override
             public void onTicker(int time) {
                 getView().setTvTimer(time + "秒", false);

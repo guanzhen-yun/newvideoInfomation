@@ -21,4 +21,9 @@
         android:text="子线程崩溃"
         android:gravity="center"
         />
+
+<!--    <android.opengl.GLSurfaceView-->
+<!--        android:id="@+id/GLSurfaceView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"/>-->
 </LinearLayout>

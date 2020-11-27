@@ -86,3 +86,9 @@ https://jingyan.baidu.com/article/456c463b3bcd950a5831449f.html 发布小程序
 
 6.flutter
 https://flutterchina.club
+
+Task 执行顺序:配置阶段  执行阶段
+
+tinyfy-java  https://tinypng.com/  Android apk瘦身最佳实践(五)：图片压缩
+
+

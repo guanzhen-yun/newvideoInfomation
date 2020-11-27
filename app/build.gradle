@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.god.plugin'
 
 android {
     compileSdkVersion Integer.valueOf(compile_sdk_version)
@@ -26,6 +27,16 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    compileOptions.encoding="UTF-8"
+}
+
+//通过插件中的配置 注册想要压缩的文件地址
+tinyInfo {
+    resourcesSrc = [
+            'src/main/res/mipmap-xxhdpi'
+    ]
+
+    apiKey = "1lt793QsRVvxfCSt6hg72T3tdHDw3sbS"
 }
 
 dependencies {

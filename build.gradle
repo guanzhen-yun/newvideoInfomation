@@ -25,3 +25,34 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+//操作符 << 代表doLast 在Gradle 4.x中被弃用，并且在Gradle 5.0 被移除了
+//task cleanSelf(group : "help") {
+//    //配置阶段
+//    //print("wo shi cleanSelf")
+////    doFirst {
+////        print("wo shi doFirst")
+////    }
+//    //执行阶段  doLast 是task之后执行  doFirst是task之前执行  配置阶段代码一定会被按照顺序执行
+//    doLast {
+//        print("wo shi cleanSelf")
+//    }
+//}
+//
+////dependsOn 可以触发依赖的执行顺序
+//task cleanSelf1(group : "help",  dependsOn: cleanSelf) {
+//    doLast {
+//        print("wo shi cleanSelf1")
+//    }
+//}
+//
+////task.execute 在5.0之后废弃  变成 taskA.finalizedBy "taskB"
+//clean.doLast {
+//    cleanSelf.execute()
+//}
+//this.project.afterEvaluate {
+//    Task clean = project.tasks.getByName("clean");
+//    if(clean != null) {
+//        clean.finalizedBy "cleanSelf"
+//    }
+//}
